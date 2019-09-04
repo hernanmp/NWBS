@@ -348,6 +348,7 @@ NBS_full =  function(y,z,gam,N)
   p1 =  parent(temp1)
   aux = sort(Dval,decreasing = TRUE)
   tau_grid = rev(aux[1:min(20,length(Dval))]-10^{-5})
+  tau_grid =  tau_grid[which(is.na(tau_grid)==FALSE)] ### *
   tau_grid = c(tau_grid,10)
   
   S =  c()
@@ -600,7 +601,7 @@ wbs_Delta_se_t  =  function(y,s,e,t,N,alpha, beta)
   #  alpha_new =  alpha_new[ind]
   #  beta_new=   beta_new[ind]
   # # 
-  ind = which( beta_new- alpha_new >20)
+  ind = which( beta_new- alpha_new >5)
   alpha_new =  alpha_new[ind]
   beta_new=   beta_new[ind]
   M =  length(alpha_new)
